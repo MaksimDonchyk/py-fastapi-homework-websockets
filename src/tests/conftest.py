@@ -148,7 +148,7 @@ async def s3_client(settings, ensure_s3_bucket):
 @pytest_asyncio.fixture(scope="function")
 async def client(email_sender_stub, s3_storage_fake, user_activity_repo_fake):
     """
-    Async HTTP client with fakes injected (isolated per function).
+    Async HTTP client with fakes injected (isolated per function ).
     """
     app.dependency_overrides[get_accounts_email_notificator] = lambda: email_sender_stub
     app.dependency_overrides[get_s3_storage_client] = lambda: s3_storage_fake
