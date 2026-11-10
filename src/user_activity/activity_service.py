@@ -59,7 +59,6 @@ class UserActivityService:
 
             await self.ws_manager.connect(websocket, user_activity_schema)
 
-
             active_users = await self.activity_repo.get_all_active_users()
             snapshot_message = {
                 "event": "online_users",
@@ -67,7 +66,6 @@ class UserActivityService:
             }
             await self.ws_manager.send_personal_message(snapshot_message, user_id)
 
-            # 6. Цикл підтримки з'єднання та читання вхідних повідомлень
             while True:
                 await websocket.receive_json()
 
